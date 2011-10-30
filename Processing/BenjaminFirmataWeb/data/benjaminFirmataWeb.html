@@ -1,0 +1,71 @@
+<html>
+<head>
+	<script>
+        /* Recebe os eventos do teclado */
+		function dirigir(event) {
+            /* 32 == Espaco */
+            if(event.which == 32) {
+                direcao(0);
+            }
+
+            /* 119 == w || 87 == W */
+            else if(event.which == 119 || event.which == 87) {
+                direcao(1);
+            }
+
+            /* 115 == s || 83 == S */
+            else if(event.which == 115 || event.which == 83) {
+                direcao(3);
+            }
+
+            /* 97 == a || 65 == A */
+            else if(event.which == 97 || event.which == 65) {
+                direcao(4);
+            }
+
+            /* 100 == d || 68 == D */
+            else if(event.which == 100 || event.which == 68) {
+                direcao(2);
+            }
+		}
+        
+        /* Submete o formulário com a direção selecionada */
+        function direcao(direcao) {
+            /* Pisca o botão pressionado */
+            document.getElementById(direcao).style.backgroundColor = "gray";
+            document.getElementById(direcao).style.color = "white";
+            
+            /* Muda a direção e submete o formulário */
+            document.forms[0].direcao.value = direcao;
+            document.forms[0].submit();
+        }
+	</script>
+</head>
+
+<body onkeypress="dirigir(event)">
+<table width='100%' height='100%'>
+	<tr width='100%' height='100%' valign='middle' align='center'>
+		<td width='100%' height='100%'>
+			<form method="GET">
+				<input type='hidden' name='direcao' value='0'/>
+                
+                <table width="500">
+                    <tr height="50">
+                        <td align="center">&nbsp;</td>
+                        <td align="center" id="1" style="border: 1px solid #000000">&uarr; (W)</td>
+                        <td align="center">&nbsp;</td>
+                    </tr>
+                    <tr height="50">
+                        <td align="center" id="4" style="border: 1px solid #000000">&larr; (A)</td>
+                        <td align="center" id="3" style="border: 1px solid #000000">&darr; (S)</td>
+                        <td align="center" id="2" style="border: 1px solid #000000">&rarr; (D)</td>
+                    </tr height="50">
+                    <tr><td colspan="3" align="center">&nbsp;</td></tr>
+                    <tr><td colspan="3" align="center" id="0" style="border: 1px solid #000000">PARAR (Espa&ccedil;o)</td></tr>
+                </table>
+			</form>
+		</td>
+	</tr>
+</table>
+</body>
+</html>
